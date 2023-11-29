@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ttX1AqQjzLXOdYtss4uj8P9X7GFnbUgHiEYJH4HJ6iM=",
+  "Source": "CubeTimer.WebApi",
+  "BasePath": "_content/CubeTimer.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
