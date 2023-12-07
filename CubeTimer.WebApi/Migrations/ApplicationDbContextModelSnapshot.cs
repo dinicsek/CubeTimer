@@ -94,7 +94,7 @@ namespace CubeTimer.WebApi.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("CubeId")
+                    b.Property<int?>("CubeId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Scramble")
@@ -107,8 +107,8 @@ namespace CubeTimer.WebApi.Migrations
                     b.Property<int?>("SolveModifier")
                         .HasColumnType("integer");
 
-                    b.Property<TimeSpan>("Time")
-                        .HasColumnType("interval");
+                    b.Property<int>("Time")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -191,8 +191,7 @@ namespace CubeTimer.WebApi.Migrations
                     b.HasOne("CubeTimer.WebApi.Infrastructure.Models.Cube", "Cube")
                         .WithMany("Solves")
                         .HasForeignKey("CubeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("CubeTimer.WebApi.Infrastructure.Models.Session", "Session")
                         .WithMany("Solves")

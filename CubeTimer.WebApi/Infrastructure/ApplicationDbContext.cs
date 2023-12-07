@@ -9,7 +9,13 @@ public class ApplicationDbContext : DbContext
     {
         
     }
-    
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Solve>().HasOne<Cube>(s => s.Cube).WithMany(c => c.Solves).HasForeignKey(s => s.CubeId).OnDelete(DeleteBehavior.SetNull);
+        base.OnModelCreating(modelBuilder);
+    }
+
     public DbSet<User> Users { get; set; }
     
     public DbSet<Solve> Solves { get; set; }

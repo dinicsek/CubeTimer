@@ -41,3 +41,4 @@ C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Npgsql.dll
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\obj\Debug\net7.0\CubeTimer.WebApi.sourcelink.json

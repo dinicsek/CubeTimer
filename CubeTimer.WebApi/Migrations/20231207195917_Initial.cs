@@ -82,12 +82,12 @@ namespace CubeTimer.WebApi.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Time = table.Column<TimeSpan>(type: "interval", nullable: false),
+                    Time = table.Column<int>(type: "integer", nullable: false),
                     SolveModifier = table.Column<int>(type: "integer", nullable: true),
                     Scramble = table.Column<string>(type: "text", nullable: false),
                     UserId = table.Column<int>(type: "integer", nullable: false),
                     SessionId = table.Column<int>(type: "integer", nullable: false),
-                    CubeId = table.Column<int>(type: "integer", nullable: false),
+                    CubeId = table.Column<int>(type: "integer", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -99,7 +99,7 @@ namespace CubeTimer.WebApi.Migrations
                         column: x => x.CubeId,
                         principalTable: "Cubes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Solves_Sessions_SessionId",
                         column: x => x.SessionId,
