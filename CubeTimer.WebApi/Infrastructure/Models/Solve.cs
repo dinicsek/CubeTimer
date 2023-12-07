@@ -17,8 +17,8 @@ public class Solve : TimestampedEntity
     public User User { get; set; }
     public int UserId { get; set; }
     
-    public Session Session { get; set; }
-    public int SessionId { get; set; }
+    public Session? Session { get; set; }
+    public int? SessionId { get; set; }
 
     public Cube? Cube { get; set; }
     public int? CubeId { get; set; }

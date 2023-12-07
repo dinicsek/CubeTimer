@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CubeTimer.WebApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231207195917_Initial")]
+    [Migration("20231207203417_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -104,7 +104,7 @@ namespace CubeTimer.WebApi.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("SessionId")
+                    b.Property<int?>("SessionId")
                         .HasColumnType("integer");
 
                     b.Property<int?>("SolveModifier")
@@ -193,14 +193,11 @@ namespace CubeTimer.WebApi.Migrations
                 {
                     b.HasOne("CubeTimer.WebApi.Infrastructure.Models.Cube", "Cube")
                         .WithMany("Solves")
-                        .HasForeignKey("CubeId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("CubeId");
 
                     b.HasOne("CubeTimer.WebApi.Infrastructure.Models.Session", "Session")
                         .WithMany("Solves")
-                        .HasForeignKey("SessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SessionId");
 
                     b.HasOne("CubeTimer.WebApi.Infrastructure.Models.User", "User")
                         .WithMany("Solves")

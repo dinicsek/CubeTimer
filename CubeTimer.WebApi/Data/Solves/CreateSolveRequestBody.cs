@@ -15,7 +15,7 @@ public class CreateSolveRequestBody : IValidatableObject
     public string Scramble { get; set; }
 
     [Required]
-    public int SessionId { get; set; }
+    public int? SessionId { get; set; }
     
     [Required]
     public int? CubeId { get; set; }

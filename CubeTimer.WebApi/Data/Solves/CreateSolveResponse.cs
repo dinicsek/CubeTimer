@@ -14,7 +14,7 @@ public class CreateSolveResponse
     
     public int UserId { get; set; }
     
-    public int SessionId { get; set; }
+    public int? SessionId { get; set; }
     
     public int? CubeId { get; set; }
 }

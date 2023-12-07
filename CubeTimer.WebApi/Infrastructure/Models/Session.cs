@@ -15,5 +15,7 @@ public class Session : TimestampedEntity
     
     public User User { get; set; }
     
+    public int UserId { get; set; }
+    
     public List<Solve> Solves { get; set; }
 }

@@ -86,7 +86,7 @@ namespace CubeTimer.WebApi.Migrations
                     SolveModifier = table.Column<int>(type: "integer", nullable: true),
                     Scramble = table.Column<string>(type: "text", nullable: false),
                     UserId = table.Column<int>(type: "integer", nullable: false),
-                    SessionId = table.Column<int>(type: "integer", nullable: false),
+                    SessionId = table.Column<int>(type: "integer", nullable: true),
                     CubeId = table.Column<int>(type: "integer", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
@@ -98,14 +98,12 @@ namespace CubeTimer.WebApi.Migrations
                         name: "FK_Solves_Cubes_CubeId",
                         column: x => x.CubeId,
                         principalTable: "Cubes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Solves_Sessions_SessionId",
                         column: x => x.SessionId,
                         principalTable: "Sessions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Solves_Users_UserId",
                         column: x => x.UserId,
