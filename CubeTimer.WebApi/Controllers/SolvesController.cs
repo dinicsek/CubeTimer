@@ -21,7 +21,7 @@ public class SolvesController : ControllerBase
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<IndexSolveResponse>> Index()
+    public async Task<ActionResult<IEnumerable<IndexSolveResponse>>> Index()
     {
         var solves = await _context.Solves.ToListAsync();
 
@@ -33,7 +33,8 @@ public class SolvesController : ControllerBase
             Scramble = s.Scramble,
             UserId = s.UserId,
             SessionId = s.SessionId,
-            CubeId = s.CubeId
+            CubeId = s.CubeId,
+            CreatedAt = s.CreatedAt
         }));
     }
     [HttpGet("{id}")]
@@ -55,7 +56,8 @@ public class SolvesController : ControllerBase
             Scramble = solve.Scramble,
             UserId = solve.UserId,
             SessionId = solve.SessionId,
-            CubeId = solve.CubeId
+            CubeId = solve.CubeId,
+            CreatedAt = solve.CreatedAt
         });
     }
     
@@ -102,7 +104,8 @@ public class SolvesController : ControllerBase
             Scramble = solve.Scramble,
             UserId = solve.UserId,
             SessionId = solve.SessionId,
-            CubeId = solve.CubeId
+            CubeId = solve.CubeId,
+            CreatedAt = solve.CreatedAt
         }); 
     }
     [HttpDelete("{id}")]

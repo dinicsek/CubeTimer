@@ -2,8 +2,6 @@
 
 public class UpdateSessionRequestBody
 {
-    public int Id { get; set; }
-    
     public string? SessionName { get; set; }
     
     public string? Description { get; set; }

@@ -41,13 +41,12 @@ public class SessionsController : ControllerBase
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<IndexSessionResponse>> Index()
+    public async Task<ActionResult<IEnumerable<IndexSessionResponse>>> Index()
     {
         var sessions = await _context.Sessions.ToListAsync();
 
         return Ok(sessions.Select(s => new IndexSessionResponse
         {
-            Id = s.Id,
             SessionName = s.SessionName,
             UserId = s.UserId,
             Description = s.Description

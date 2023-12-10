@@ -17,4 +17,6 @@ public class CreateSolveResponse
     public int? SessionId { get; set; }
     
     public int? CubeId { get; set; }
+    
+    public DateTime CreatedAt { get; set; }
 }

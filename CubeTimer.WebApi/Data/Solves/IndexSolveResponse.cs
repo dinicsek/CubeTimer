@@ -17,4 +17,6 @@ public class IndexSolveResponse
     public int? SessionId { get; set; }
     
     public int? CubeId { get; set; }   
+    
+    public DateTime CreatedAt { get; set; }
 }

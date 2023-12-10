@@ -40,7 +40,7 @@ public class CubesController : ControllerBase
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<IndexCubeResponse>> Index()
+    public async Task<ActionResult<IEnumerable<IndexCubeResponse>>> Index()
     {
         var cubes = await _context.Cubes.ToListAsync();
 

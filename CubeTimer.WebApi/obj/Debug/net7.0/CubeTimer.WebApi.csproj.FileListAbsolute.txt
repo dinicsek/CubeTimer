@@ -42,3 +42,10 @@ C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\obj\Debug\net7.0\CubeTimer.WebApi.sourcelink.json
+C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

@@ -31,6 +31,7 @@ public class UpdateTimestampsInterceptor : SaveChangesInterceptor
             {
                 SetCurrentPropertyValue(
                     entry, nameof(TimestampedEntity.CreatedAt), utcNow);
+                SetCurrentPropertyValue(entry, nameof(TimestampedEntity.UpdatedAt), utcNow);
             }
 
             if (entry.State == EntityState.Modified)

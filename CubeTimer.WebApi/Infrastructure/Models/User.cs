@@ -16,6 +16,8 @@ public class User : TimestampedEntity
     
     public string Username { get; set; }
     
+    public string Password { get; set; }
+    
     public DateTime? EmailVerifiedAt { get; set; }
     
     public List<Solve> Solves { get; set; }
