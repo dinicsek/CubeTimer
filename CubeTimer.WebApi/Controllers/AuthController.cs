@@ -1,11 +1,15 @@
-﻿using System.Security.Cryptography;
+﻿using System.IdentityModel.Tokens.Jwt;
 using CubeTimer.WebApi.Data.Auth;
+using CubeTimer.WebApi.Extensions;
 using CubeTimer.WebApi.Infrastructure;
 using CubeTimer.WebApi.Infrastructure.Models;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using CubeTimer.WebApi.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CubeTimer.WebApi.Controllers;
+
 [ApiController]
 [Produces("application/json")]
 [Route("[controller]")]
@@ -13,25 +17,28 @@ public class AuthController : ControllerBase
 {
    private readonly ApplicationDbContext _context;
 
-   public AuthController(ApplicationDbContext context)
+   private readonly PasswordHasherService _passwordHasherService;
+   
+   private IConfiguration _config;
+
+   public AuthController(ApplicationDbContext context, PasswordHasherService passwordHasherService, IConfiguration config)
    {
       _context = context;
+      _passwordHasherService = passwordHasherService;
+      _config = config;
    }
+   
+  
    
    [HttpPost("register")]
    [ProducesResponseType(StatusCodes.Status204NoContent)]
    [ProducesResponseType(StatusCodes.Status400BadRequest)]
    public async Task<ActionResult> Register(RegisterRequestBody body)
    {
-      byte[] salt = RandomNumberGenerator.GetBytes(128 / 8);
+      await this.Validate(async () => await _context.Users.AnyAsync(u => u.Email == body.Email),
+         nameof(RegisterRequestBody.Email), "The given email is already in use.");
       
-      string passwordHashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-         password: body.Password,
-         salt: salt,
-         prf: KeyDerivationPrf.HMACSHA256,
-         iterationCount: 100000,
-         numBytesRequested: 256 / 8));
-      
+      string passwordHashed = _passwordHasherService.HashPassword(body.Password);
       var user = new User
       {
          Email = body.Email,
@@ -45,10 +52,33 @@ public class AuthController : ControllerBase
 
       return NoContent();
    }
-   
-  /* [HttpPost("login")]
+
+  [HttpPost("login")]
    [ProducesResponseType(StatusCodes.Status200OK)]
    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-   public async Task<ActionResult<LoginRequestBody>>*/
-    
+   public async Task<ActionResult<LoginResponse>> Login([FromBody] LoginRequestBody body)
+   {
+      var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == body.Email);
+
+      if (user == null)
+      {
+         return ValidationProblem(new ValidationProblemDetails(new Dictionary<string, string[]>
+         {
+            { nameof(LoginRequestBody), new[] { "The given user does not exist." } }
+         }));
+      }
+      
+      var securityKey = new SymmetricSecurityKey(Convert.FromBase64String(_config["Jwt:Key"]));
+      var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+      var sectoken = new JwtSecurityToken(_config["Jwt:Issuer"],
+         _config["Jwt:Issuer"],
+         expires: DateTime.Now.AddMinutes(120),
+         signingCredentials: credentials);
+
+      var token =  new JwtSecurityTokenHandler().WriteToken(sectoken);
+
+      return Ok(token);
+   }
+
 }

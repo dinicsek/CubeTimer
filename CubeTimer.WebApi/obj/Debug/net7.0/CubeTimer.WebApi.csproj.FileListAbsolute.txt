@@ -49,3 +49,4 @@ C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
