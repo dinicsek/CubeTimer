@@ -1,6 +1,7 @@
 ﻿using CubeTimer.WebApi.Data.Sessions;
 using CubeTimer.WebApi.Infrastructure;
 using CubeTimer.WebApi.Infrastructure.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ public class SessionsController : ControllerBase
     }
     
     [HttpGet("{id}")]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ViewSessionResponse>> View([FromRoute] int id)
@@ -39,6 +41,7 @@ public class SessionsController : ControllerBase
     }
     
     [HttpGet]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<IndexSessionResponse>>> Index()
@@ -54,6 +57,7 @@ public class SessionsController : ControllerBase
     }
     
     [HttpPost]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<CreateSessionResponse>> Create([FromBody] CreateSessionRequestBody body)
@@ -77,6 +81,7 @@ public class SessionsController : ControllerBase
     }
     
     [HttpDelete("{id}")]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete([FromRoute] int id)
@@ -95,6 +100,7 @@ public class SessionsController : ControllerBase
     }
     
     [HttpPatch("{id}")]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateSessionRequestBody body)

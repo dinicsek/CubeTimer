@@ -95,7 +95,7 @@ public class CubesController : ControllerBase
         
         return NoContent();
     }
-    [HttpPatch("{id}")
+    [HttpPatch("{id}")]
     [Authorize]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

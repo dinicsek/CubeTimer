@@ -1,6 +1,7 @@
 ﻿using CubeTimer.WebApi.Data.Solves;
 using CubeTimer.WebApi.Infrastructure;
 using CubeTimer.WebApi.Infrastructure.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ public class SolvesController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<IndexSolveResponse>>> Index()
@@ -38,6 +40,7 @@ public class SolvesController : ControllerBase
         }));
     }
     [HttpGet("{id}")]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ViewSolveResponse>> View([FromRoute] int id)
@@ -62,6 +65,7 @@ public class SolvesController : ControllerBase
     }
     
     [HttpPost]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<CreateSolveResponse>> Create([FromBody] CreateSolveRequestBody body)
@@ -109,6 +113,7 @@ public class SolvesController : ControllerBase
         }); 
     }
     [HttpDelete("{id}")]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete([FromRoute] int id)
@@ -129,6 +134,7 @@ public class SolvesController : ControllerBase
     }
 
     [HttpPatch("{id}")]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
