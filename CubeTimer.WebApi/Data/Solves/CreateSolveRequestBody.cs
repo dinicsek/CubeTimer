@@ -19,9 +19,6 @@ public class CreateSolveRequestBody : IValidatableObject
     
     [Required]
     public int? CubeId { get; set; }
-
-    [Required]
-    public int UserId { get; set; }
     
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

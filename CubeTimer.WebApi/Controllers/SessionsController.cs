@@ -1,4 +1,5 @@
-﻿using CubeTimer.WebApi.Data.Sessions;
+﻿using System.Security.Claims;
+using CubeTimer.WebApi.Data.Sessions;
 using CubeTimer.WebApi.Infrastructure;
 using CubeTimer.WebApi.Infrastructure.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -50,6 +51,7 @@ public class SessionsController : ControllerBase
 
         return Ok(sessions.Select(s => new IndexSessionResponse
         {
+            Id = s.Id,
             SessionName = s.SessionName,
             UserId = s.UserId,
             Description = s.Description
@@ -65,7 +67,7 @@ public class SessionsController : ControllerBase
         var session = new Session
         {
             SessionName = body.SessionName,
-            UserId = body.UserId,
+            UserId = Convert.ToInt32( User.FindFirst(ClaimTypes.NameIdentifier)?.Value),
             Description = body.Description
         };
         _context.Sessions.Add(session);
@@ -113,7 +115,6 @@ public class SessionsController : ControllerBase
         }
 
         session.SessionName = body.SessionName;
-        session.UserId = body.UserId;
         session.Description = body.Description;
         await _context.SaveChangesAsync();
 

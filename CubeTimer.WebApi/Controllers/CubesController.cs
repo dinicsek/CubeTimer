@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
 using CubeTimer.WebApi.Data.Cubes;
 using CubeTimer.WebApi.Infrastructure;
 using CubeTimer.WebApi.Infrastructure.Models;
@@ -65,7 +66,8 @@ public class CubesController : ControllerBase
         {
             CubeEvent = body.CubeEvent,
             CubeType = body.CubeType,
-            UserId = 1
+            UserId = Convert.ToInt32( User.FindFirst(ClaimTypes.NameIdentifier)?.Value)
+
         };
         await _context.Cubes.AddAsync(cube);
         await _context.SaveChangesAsync();

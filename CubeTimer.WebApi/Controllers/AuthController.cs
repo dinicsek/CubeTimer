@@ -1,4 +1,5 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using CubeTimer.WebApi.Data.Auth;
 using CubeTimer.WebApi.Extensions;
 using CubeTimer.WebApi.Infrastructure;
@@ -71,14 +72,28 @@ public class AuthController : ControllerBase
       var securityKey = new SymmetricSecurityKey(Convert.FromBase64String(_config["Jwt:Key"]));
       var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-      var sectoken = new JwtSecurityToken(_config["Jwt:Issuer"],
+      var tokenDescriptor = new SecurityTokenDescriptor
+      {
+         Subject = new ClaimsIdentity(new[]
+         {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+         }),
+         Expires = DateTime.Now.AddMinutes(120),
+         SigningCredentials = credentials,
+         Audience = _config["Jwt:Audience"],
+         Issuer = _config["Jwt:Issuer"]
+      };
+      
+      /*var sectoken = new JwtSecurityToken(_config["Jwt:Issuer"],
          _config["Jwt:Issuer"],
          expires: DateTime.Now.AddMinutes(120),
-         signingCredentials: credentials);
+         signingCredentials: credentials
+         );
+      */
+      
+      var tokenHandler = new JwtSecurityTokenHandler();
+      var token = tokenHandler.CreateToken(tokenDescriptor);
 
-      var token =  new JwtSecurityTokenHandler().WriteToken(sectoken);
-
-      return Ok(token);
+      return Ok(new { Token = tokenHandler.WriteToken(token) });
    }
-
 }

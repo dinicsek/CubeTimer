@@ -1,4 +1,5 @@
-﻿using CubeTimer.WebApi.Data.Solves;
+﻿using System.Security.Claims;
+using CubeTimer.WebApi.Data.Solves;
 using CubeTimer.WebApi.Infrastructure;
 using CubeTimer.WebApi.Infrastructure.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -93,7 +94,8 @@ public class SolvesController : ControllerBase
             Scramble = body.Scramble,
             SessionId = body.SessionId,
             CubeId = body.CubeId,
-            UserId = body.UserId
+            UserId = Convert.ToInt32( User.FindFirst(ClaimTypes.NameIdentifier)?.Value)
+
         };
 
         _context.Solves.Attach(solve);
