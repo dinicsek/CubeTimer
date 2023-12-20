@@ -84,13 +84,6 @@ public class AuthController : ControllerBase
          Issuer = _config["Jwt:Issuer"]
       };
       
-      /*var sectoken = new JwtSecurityToken(_config["Jwt:Issuer"],
-         _config["Jwt:Issuer"],
-         expires: DateTime.Now.AddMinutes(120),
-         signingCredentials: credentials
-         );
-      */
-      
       var tokenHandler = new JwtSecurityTokenHandler();
       var token = tokenHandler.CreateToken(tokenDescriptor);
 
