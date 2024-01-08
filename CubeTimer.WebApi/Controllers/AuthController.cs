@@ -43,7 +43,8 @@ public class AuthController : ControllerBase
       var user = new User
       {
          Email = body.Email,
-         Name = body.Name,
+         FirstName = body.FirstName,
+         LastName = body.LastName,
          Username = body.Username,
          Password = passwordHashed
       };
@@ -78,7 +79,7 @@ public class AuthController : ControllerBase
          {
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
          }),
-         Expires = DateTime.Now.AddMinutes(120),
+         Expires = DateTime.Now.AddDays(30),
          SigningCredentials = credentials,
          Audience = _config["Jwt:Audience"],
          Issuer = _config["Jwt:Issuer"]

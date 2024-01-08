@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+.dottedBg {
+    background-image: radial-gradient(#fff 3px, transparent 0);
+    background-size: 40px 40px;
+    opacity: 0.5;
+}
