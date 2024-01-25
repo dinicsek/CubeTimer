@@ -5,6 +5,7 @@ using CubeTimer.WebApi.Extensions;
 using CubeTimer.WebApi.Infrastructure;
 using CubeTimer.WebApi.Infrastructure.Models;
 using CubeTimer.WebApi.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -31,6 +32,7 @@ public class AuthController : ControllerBase
    
   
    
+   [EnableCors]
    [HttpPost("register")]
    [ProducesResponseType(StatusCodes.Status204NoContent)]
    [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -55,6 +57,7 @@ public class AuthController : ControllerBase
       return NoContent();
    }
 
+   [EnableCors]
   [HttpPost("login")]
    [ProducesResponseType(StatusCodes.Status200OK)]
    [ProducesResponseType(StatusCodes.Status400BadRequest)]

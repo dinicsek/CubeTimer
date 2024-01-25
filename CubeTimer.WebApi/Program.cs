@@ -11,6 +11,7 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 //builder.Services.AddSingleton<>()
 builder.Services.AddControllers(o =>
@@ -74,9 +75,17 @@ builder.Services.AddAuthentication(options =>
     };
 });
 builder.Services.AddAuthorization();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+        builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
 var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseCors("AllowAll");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
