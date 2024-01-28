@@ -1,5 +1,6 @@
 import { CubeEvent } from "../../Enums/CubeEvent.ts";
 
+
 export function generateScramble(event: CubeEvent, length: number) {
     const scramble: string[] = [];
     let randomMove = "";

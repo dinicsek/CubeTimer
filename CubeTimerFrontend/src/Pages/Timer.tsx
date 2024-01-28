@@ -1,20 +1,61 @@
-import Stopwatch from "../Components/Stopwatch.tsx";
-import React, { useEffect, useState } from "react";
-import { ScrambleLengthSettingContext } from "../Contexts/ScrambleLengthSettingContext.tsx";
+import Stopwatch, { getTime } from "../Components/Stopwatch.tsx";
+import React, { useContext, useEffect, useState } from "react";
 import { generateScramble } from "../Components/Utils/generateScramble.ts";
+import { Event, ScrambleLength } from "../Contexts/SettingsContext.tsx";
 import { CubeEvent } from "../Enums/CubeEvent.ts";
+import Settings from "../Components/Settings.tsx";
 
 function Timer() {
-    const length = React.useContext(ScrambleLengthSettingContext);
-    const [scramble, setScramble] = useState(generateScramble(CubeEvent.FourByFour, length));
+    const { event } = useContext(Event);
+    const { length } = useContext(ScrambleLength);
+    const [scramble, setScramble] = useState(generateScramble(event, length));
+    let displayEvent = "333";
+    switch (event) {
+        case CubeEvent.OneByOne:
+            displayEvent = "111";
+            break;
+        case CubeEvent.TwoByTwo:
+            displayEvent = "222";
+            break;
+        case CubeEvent.ThreeByThree:
+            displayEvent = "333";
+            break;
+        case CubeEvent.FourByFour:
+            displayEvent = "444";
+            break;
+        case CubeEvent.FiveByFive:
+            displayEvent = "555";
+            break;
+        case CubeEvent.Pyraminx:
+            displayEvent = "pyram";
+    }
 
     useEffect(() => {
         document.addEventListener("regenerateScramble", () => {
-            setScramble(generateScramble(CubeEvent.FourByFour, length));
+            // fetch("http://localhost:5123/Solves", {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //         "Authorization": `Bearer ${localStorage.getItem("token")}`
+            //     },
+            //     body: JSON.stringify({
+            //         "cubeId": 1,
+            //         "scramble": scramble,
+            //         "sessionId": 1,
+            //         "time": getTime()
+            //     })
+            // }).then((res) => {
+            //     console.log(res);
+            // });
+            console.log(getTime());
+            setScramble(generateScramble(event, length));
         });
     }, []);
     return (
         <div className="bg-blue-600 w-screen h-screen overflow-hidden">
+            <div className="absolute top-4 right-4 size-[30px]">
+                <Settings />
+            </div>
             <div className="flex justify-center items-center flex-col m-6">
                 <p className="text-3xl text-center text-balance">{scramble}</p>
             </div>
@@ -24,7 +65,7 @@ function Timer() {
             <div
                 className=" max-sm:right-1/2 max-sm:translate-x-1/2 rounded-[20px] absolute right-4 bottom-4 border-solid border-2 border-white/[0.2] outline-none shadow-white shadow-sm backdrop-blur-sm">
                 {/* @ts-expect-error*/}
-                <scramble-display event="444" scramble={scramble} />
+                <scramble-display event={displayEvent} scramble={scramble} />
             </div>
         </div>
     );

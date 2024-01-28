@@ -1,11 +1,21 @@
 import { Cog6ToothIcon } from "@heroicons/react/16/solid";
-import { useState } from "react";
+import * as Popover from "@radix-ui/react-popover";
 
 function Settings() {
-    const [expanded, setExpanded] = useState(false);
     return (
-        <div>
-            <Cog6ToothIcon />
-        </div>
+        <Popover.Root>
+            <Popover.Trigger>
+                <Cog6ToothIcon />
+            </Popover.Trigger>
+            <Popover.Anchor />
+            <Popover.Portal>
+                <Popover.Content>
+                    <Popover.Close />
+                    <Popover.Arrow />
+                </Popover.Content>
+            </Popover.Portal>
+        </Popover.Root>
     );
 }
+
+export default Settings;

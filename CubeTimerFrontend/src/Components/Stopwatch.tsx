@@ -70,7 +70,7 @@ const Stopwatch = () => {
     useEffect(() => {
         let intervalId;
         if (state === TimerState.Running) {
-            intervalId = setInterval(() => setTime(time + 1), 10);
+            intervalId = setInterval(() => setTime(time + 1), 8.5);
         }
         return () => clearInterval(intervalId);
     }, [state, time]);
@@ -100,5 +100,8 @@ const Stopwatch = () => {
 
     );
 };
-
+export const getTime = () => {
+    const time = document.getElementById("time");
+    return time?.innerHTML;
+};
 export default Stopwatch;

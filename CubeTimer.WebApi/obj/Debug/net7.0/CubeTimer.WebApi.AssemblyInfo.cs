@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CubeTimer.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+83f62d9eddebca77d553c403a88cb798615a9c8b")]
 [assembly: System.Reflection.AssemblyProductAttribute("CubeTimer.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CubeTimer.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

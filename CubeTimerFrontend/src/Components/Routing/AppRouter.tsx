@@ -14,7 +14,9 @@ export const AppRouter = () => {
                 <Route path={"/Login"} element={<LoginForm />} />
             </Route>
             <Route element={<AuthenticatedGuard />}>
-                <Route path={"/"} element={<Timer />} />
+                <Route path={"/"} element={
+                    <Timer />
+                } />
             </Route>
         </Routes>
     );
