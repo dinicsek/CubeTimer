@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { AppRouter } from "./Components/Routing/AppRouter.tsx";
 import { AuthContext, AuthProvider } from "./Contexts/AuthContext.tsx";
+import { SettingsContextProvider } from "./Contexts/SettingsContext.tsx";
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <AuthProvider>
-        <App />
+        <SettingsContextProvider>
+            <App />
+        </SettingsContextProvider>
     </AuthProvider>
 );

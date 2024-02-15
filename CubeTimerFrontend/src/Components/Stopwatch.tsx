@@ -10,9 +10,9 @@ enum TimerState {
 const Stopwatch = () => {
     const [state, _setState] = useState<TimerState>(TimerState.Stopped);
     const stateRef = useRef(state);
+    const [startTime, setStartTime] = useState<number>(0);
     const [time, setTime] = useState(0);
     const [isInspectionEnabled, setIsInspectionEnabled] = useState(false);
-    const token = localStorage.getItem("token");
     const setState = (newState: TimerState) => {
         stateRef.current = newState;
         _setState(newState);
@@ -32,15 +32,7 @@ const Stopwatch = () => {
                         time.style.color = "green";
                         break;
                     case TimerState.Running:
-                        // fetch("http://localhost:5123/Solves", {
-                        //     method: 'POST',
-                        //     headers: {
-                        //         "Content-Type": "application/json",
-                        //         "Authorization": "Bearer " + localStorage.getItem("token")
-                        //     },
-                        //     body: JSON.stringify(time),
-                        // })
-                        document.dispatchEvent(new Event("regenerateScramble"));
+                        // document.dispatchEvent(new Event("regenerateScramble"));
                         setState(TimerState.Stopped);
                         time.style.color = "black";
                         break;
@@ -70,10 +62,19 @@ const Stopwatch = () => {
     useEffect(() => {
         let intervalId;
         if (state === TimerState.Running) {
-            intervalId = setInterval(() => setTime(time + 1), 8.5);
+            if (startTime === 0) {
+                setStartTime(Date.now());
+            }
+            intervalId = setInterval(() => {
+                if (state === TimerState.Running) {
+                    setTime(Math.floor((Date.now() - startTime) / 10));
+                }
+            }, 10);
+        } else {
+            setStartTime(0);
         }
         return () => clearInterval(intervalId);
-    }, [state, time]);
+    }, [state, startTime]);
     // Minutes calculation
     const minutes = Math.floor((time % 360000) / 6000);
 
@@ -101,7 +102,13 @@ const Stopwatch = () => {
     );
 };
 export const getTime = () => {
-    const time = document.getElementById("time");
-    return time?.innerHTML;
+    let ntime = "";
+    const time = document.getElementById("time")?.innerHTML;
+    for (let i = 0; i <= time.length; i++) {
+        if (time[i] !== ":") {
+            ntime += time[i];
+        }
+    }
+    return +ntime;
 };
 export default Stopwatch;
