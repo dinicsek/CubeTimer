@@ -24,12 +24,14 @@ const LoginForm = () => {
             if (res.ok) {
                 return res.json();
             }
+            console.log(res);
             throw new Error("Something went wrong");
         }).then((data) => {
             localStorage.setItem("token", data.token);
         }).catch((err) => {
             console.log(err);
         });
+        // location.reload();
     }
 
     return (

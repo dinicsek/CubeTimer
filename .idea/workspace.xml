@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3cd418d3-d958-4aeb-9d39-e2f3a3f47404" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Controllers/FileUploadController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Data/FileUploads/FileUploadResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Data/FileUploads/ViewFileUploadResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Infrastructure/Models/FileUpload.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Services/FileService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CubeTimer/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CubeTimer/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/Infrastructure/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Infrastructure/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/Infrastructure/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Infrastructure/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/Migrations/20240105131302_Initial.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Migrations/20240321091617_Initial.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/Migrations/20240105131302_Initial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Migrations/20240321091617_Initial.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/bin/Debug/net7.0/CubeTimer.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/bin/Debug/net7.0/CubeTimer.WebApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/bin/Debug/net7.0/CubeTimer.WebApi.exe" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/bin/Debug/net7.0/CubeTimer.WebApi.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/bin/Debug/net7.0/CubeTimer.WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/bin/Debug/net7.0/CubeTimer.WebApi.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/CubeTimer.WebApi.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/ref/CubeTimer.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/ref/CubeTimer.WebApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/refint/CubeTimer.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimer.WebApi/obj/Debug/net7.0/refint/CubeTimer.WebApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimerFrontend/src/Components/PreviousTimes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimerFrontend/src/Components/PreviousTimes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimerFrontend/src/Components/Routing/AppRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimerFrontend/src/Components/Routing/AppRouter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimerFrontend/src/Components/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimerFrontend/src/Components/Settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimerFrontend/src/Components/Stopwatch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimerFrontend/src/Components/Stopwatch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimerFrontend/src/Components/Utils/generateScramble.ts" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimerFrontend/src/Components/Utils/generateScramble.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimerFrontend/src/Pages/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimerFrontend/src/Pages/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CubeTimerFrontend/src/Pages/Timer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/CubeTimerFrontend/src/Pages/TimerPage.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\Program Files\Php\php.exe" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2eGkrcYWtWiyOECMj2blGA8E5Ng" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.laravel-idea.search-composer-json": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3cd418d3-d958-4aeb-9d39-e2f3a3f47404" name="Changes" comment="" />
+      <created>1711538518088</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711538518088</updated>
+      <workItem from="1711538521908" duration="15000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

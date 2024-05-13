@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CubeTimer.WebApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240105131302_Initial")]
+    [Migration("20240321091617_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -54,6 +54,50 @@ namespace CubeTimer.WebApi.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Cubes");
+                });
+
+            modelBuilder.Entity("CubeTimer.WebApi.Infrastructure.Models.FileUpload", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Filename")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("MimeType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("OriginalFilename")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Purpose")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FileUploads");
                 });
 
             modelBuilder.Entity("CubeTimer.WebApi.Infrastructure.Models.Session", b =>
@@ -186,6 +230,17 @@ namespace CubeTimer.WebApi.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("CubeTimer.WebApi.Infrastructure.Models.FileUpload", b =>
+                {
+                    b.HasOne("CubeTimer.WebApi.Infrastructure.Models.User", "User")
+                        .WithMany("FileUploads")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("CubeTimer.WebApi.Infrastructure.Models.Session", b =>
                 {
                     b.HasOne("CubeTimer.WebApi.Infrastructure.Models.User", "User")
@@ -232,6 +287,8 @@ namespace CubeTimer.WebApi.Migrations
 
             modelBuilder.Entity("CubeTimer.WebApi.Infrastructure.Models.User", b =>
                 {
+                    b.Navigation("FileUploads");
+
                     b.Navigation("Sessions");
 
                     b.Navigation("Solves");

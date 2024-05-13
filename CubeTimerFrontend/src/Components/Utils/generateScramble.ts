@@ -10,9 +10,9 @@ export function generateScramble(event: CubeEvent, length: number) {
     switch (event) {
         case CubeEvent.OneByOne:
             for (let i = 0; i < length; i++) {
-                randomMove = movesOneByOne[Math.floor(Math.random() * moves.length)];
+                randomMove = movesOneByOne[Math.floor(Math.random() * movesOneByOne.length)];
                 while ((scramble.length >= 1 && scramble[i - 1] === randomMove)) {
-                    randomMove = movesOneByOne[Math.floor(Math.random() * moves.length)];
+                    randomMove = movesOneByOne[Math.floor(Math.random() * movesOneByOne.length)];
                 }
                 scramble.push(randomMove);
             }
@@ -106,9 +106,9 @@ export function generateScramble(event: CubeEvent, length: number) {
             break;
         case CubeEvent.Pyraminx:
             for (let i = 0; i < length; i++) {
-                randomMove = movesPyraminx[Math.floor(Math.random() * moves.length)];
+                randomMove = movesPyraminx[Math.floor(Math.random() * movesPyraminx.length)];
                 while ((scramble.length >= 1 && scramble[i - 1] === randomMove)) {
-                    randomMove = movesPyraminx[Math.floor(Math.random() * moves.length)];
+                    randomMove = movesPyraminx[Math.floor(Math.random() * movesPyraminx.length)];
                 }
                 scramble.push(randomMove);
             }

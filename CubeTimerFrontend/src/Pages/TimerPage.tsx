@@ -4,31 +4,33 @@ import { generateScramble } from "../Components/Utils/generateScramble.ts";
 import { CubeEvent } from "../Enums/CubeEvent.ts";
 import Settings from "../Components/Settings.tsx";
 import { SettingsContext } from "../Contexts/SettingsContext.tsx";
+import PreviousTimes from "../Components/PreviousTimes.tsx";
 
-function Timer() {
-    const [settings, setSettings] = useState(useContext(SettingsContext));
+function TimerPage() {
+    const settings = useContext(SettingsContext);
     const [scramble, setScramble] = useState(generateScramble(settings.event, settings.length));
     let displayEvent = "333";
-    switch (settings.event) {
-        case CubeEvent.OneByOne:
-            displayEvent = "111";
-            break;
-        case CubeEvent.TwoByTwo:
-            displayEvent = "222";
-            break;
-        case CubeEvent.ThreeByThree:
-            displayEvent = "333";
-            break;
-        case CubeEvent.FourByFour:
-            displayEvent = "444";
-            break;
-        case CubeEvent.FiveByFive:
-            displayEvent = "555";
-            break;
-        case CubeEvent.Pyraminx:
-            displayEvent = "pyram";
-    }
-
+    useEffect(() => {
+        switch (settings.event) {
+            case CubeEvent.OneByOne:
+                displayEvent = "111";
+                break;
+            case CubeEvent.TwoByTwo:
+                displayEvent = "222";
+                break;
+            case CubeEvent.ThreeByThree:
+                displayEvent = "333";
+                break;
+            case CubeEvent.FourByFour:
+                displayEvent = "444";
+                break;
+            case CubeEvent.FiveByFive:
+                displayEvent = "555";
+                break;
+            case CubeEvent.Pyraminx:
+                displayEvent = "pyram";
+        }
+    }, [settings.event]);
     useEffect(() => {
         document.addEventListener("regenerateScramble", () => {
             fetch("http://localhost:5123/Solves", {
@@ -50,8 +52,16 @@ function Timer() {
             setScramble(generateScramble(settings.event, settings.length));
         });
     });
+
+    useEffect(() => {
+        setScramble(generateScramble(settings.event, settings.length));
+    }, [settings.length, settings.event]);
+
     return (
         <div className="bg-blue-600 w-screen h-screen overflow-hidden">
+            <div>
+                <PreviousTimes />
+            </div>
             <div className="absolute top-4 right-4 size-[30px]">
                 <Settings />
             </div>
@@ -70,4 +80,4 @@ function Timer() {
     );
 }
 
-export default Timer;
+export default TimerPage;

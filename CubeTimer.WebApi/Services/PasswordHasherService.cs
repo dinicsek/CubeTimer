@@ -45,7 +45,36 @@ public class PasswordHasherService
 
         return Convert.ToBase64String(outputBytes);
     }
-    
+    public bool VerifyPassword(string password, string hash)
+    {
+        var decodedHash = Convert.FromBase64String(hash);
+
+        if (decodedHash.Length == 0)
+            return false;
+
+        if (decodedHash[0] != 0x01)
+            return false;
+
+        var prf = (KeyDerivationPrf)ReadNetworkByteOrder(decodedHash, 1);
+        var iterCount = (int)ReadNetworkByteOrder(decodedHash, 5);
+        var saltLength = (int)ReadNetworkByteOrder(decodedHash, 9);
+
+        if (saltLength != _hashOptions.PasswordSaltLength)
+            return false;
+
+        if (iterCount < 1)
+            return false;
+
+        var salt = new byte[saltLength];
+        Buffer.BlockCopy(decodedHash, 13, salt, 0, salt.Length);
+
+        var expectedSubkey = new byte[decodedHash.Length - 13 - salt.Length];
+        Buffer.BlockCopy(decodedHash, 13 + salt.Length, expectedSubkey, 0, expectedSubkey.Length);
+
+        var actualSubkey = KeyDerivation.Pbkdf2(password, salt, prf, iterCount, expectedSubkey.Length);
+
+        return CryptographicOperations.FixedTimeEquals(actualSubkey, expectedSubkey);
+    }
     private static uint ReadNetworkByteOrder(byte[] buffer, int offset)
     {
         return ((uint)buffer[offset + 0] << 24)
@@ -53,7 +82,6 @@ public class PasswordHasherService
                | ((uint)buffer[offset + 2] << 8)
                | buffer[offset + 3];
     }
-
     private static void WriteNetworkByteOrder(byte[] buffer, int offset, uint value)
     {
         buffer[offset + 0] = (byte)(value >> 24);

@@ -25,4 +25,6 @@ public class User : TimestampedEntity
     public List<Solve> Solves { get; set; }
     
     public List<Session> Sessions { get; set; }
+    
+    public List<FileUpload> FileUploads { get; set; }
 }

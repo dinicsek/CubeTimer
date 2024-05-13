@@ -17,4 +17,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<Session> Sessions { get; set; }
     
     public DbSet<Cube> Cubes { get; set; }
+    
+    public DbSet<FileUpload> FileUploads { get; set; }
 }
