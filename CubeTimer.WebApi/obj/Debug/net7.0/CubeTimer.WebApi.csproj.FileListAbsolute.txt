@@ -25,7 +25,6 @@ C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\obj\Debug\
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\obj\Debug\net7.0\staticwebassets.development.json
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\obj\Debug\net7.0\scopedcss\bundle\CubeTimer.WebApi.styles.css
-C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\obj\Debug\net7.0\CubeTimer.WebApi.csproj.CopyComplete
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\obj\Debug\net7.0\CubeTimer.WebApi.dll
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\obj\Debug\net7.0\refint\CubeTimer.WebApi.dll
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\obj\Debug\net7.0\CubeTimer.WebApi.pdb
@@ -50,3 +49,4 @@ C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Dini\Documents\Prog\Web\CubeTimer\CubeTimer\CubeTimer.WebApi\obj\Debug\net7.0\CubeTime.37917DD7.Up2Date

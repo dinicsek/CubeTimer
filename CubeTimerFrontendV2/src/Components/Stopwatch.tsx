@@ -1,4 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Box, rem, Title } from "@mantine/core";
+import { SettingsContext } from "../Contexts/SettingsContext.tsx";
 
 enum TimerState {
     Stopped,
@@ -12,7 +14,7 @@ const Stopwatch = () => {
     const stateRef = useRef(state);
     const [startTime, setStartTime] = useState<number>(0);
     const [time, setTime] = useState(0);
-    const [isInspectionEnabled, setIsInspectionEnabled] = useState(false);
+    const setting = useContext(SettingsContext);
     const setState = (newState: TimerState) => {
         stateRef.current = newState;
         _setState(newState);
@@ -20,16 +22,19 @@ const Stopwatch = () => {
     // on initial load
     useEffect(() => {
         const time = document.getElementById("time");
+        // KEYDOWN
         window.addEventListener("keydown", (event) => {
             if (event.key === " ") {
                 switch (stateRef.current) {
                     case TimerState.Stopped:
                         reset();
-                        setState(TimerState.Ready);
                         time.style.color = "red";
                         break;
-                    case TimerState.Inspection:
+                    case TimerState.Ready:
                         time.style.color = "green";
+                        break;
+                    case TimerState.Inspection:
+                        setState(TimerState.Running);
                         break;
                     case TimerState.Running:
                         // document.dispatchEvent(new Event("regenerateScramble"));
@@ -39,16 +44,18 @@ const Stopwatch = () => {
                 }
             }
         });
+        // KEYUP
         window.addEventListener("keyup", () => {
             switch (stateRef.current) {
                 case TimerState.Stopped:
+                    time.style.color = "black";
                     break;
                 case TimerState.Inspection:
                     time.style.color = "black";
                     setState(TimerState.Running);
                     break;
                 case TimerState.Ready:
-                    if (isInspectionEnabled)
+                    if (setting.inspectionEnabled)
                         setState(TimerState.Inspection);
                     else {
                         setState(TimerState.Running);
@@ -57,10 +64,11 @@ const Stopwatch = () => {
                     break;
             }
         });
-    }, []);
+    });
+
 
     useEffect(() => {
-        let intervalId;
+        let intervalId: number;
         if (state === TimerState.Running) {
             if (startTime === 0) {
                 setStartTime(Date.now());
@@ -89,20 +97,20 @@ const Stopwatch = () => {
     };
     return (
         <>
-            <div className="stopwatch-container">
-                <p className="stopwatch-time" id="time">
+            <Box className="stopwatch-container">
+                <Title size={rem(70)} className="stopwatch-time" id="time">
                     {minutes.toString().padStart(2, "0")}:
                     {seconds.toString().padStart(2, "0")}:
                     {milliseconds.toString().padStart(2, "0")}
-                </p>
-            </div>
+                </Title>
+            </Box>
 
         </>
 
     );
 };
 export const getTime = () => {
-    let time = document.getElementById("time")?.innerHTML;
+    let time = document.getElementById("time")!.innerHTML;
     time = time.replace(":", "");
     return +time;
 };
