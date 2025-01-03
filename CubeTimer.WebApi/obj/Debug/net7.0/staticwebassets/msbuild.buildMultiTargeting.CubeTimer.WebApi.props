@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\CubeTimer.WebApi.props" />
-</Project>

@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\CubeTimer.WebApi.props" />
-</Project>
