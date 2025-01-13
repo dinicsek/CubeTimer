@@ -1,0 +1,6 @@
+@CubeTimer.WebApi_HostAddress = http://localhost:5168
+
+GET {{CubeTimer.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
