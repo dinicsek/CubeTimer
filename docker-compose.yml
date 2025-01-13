@@ -1,9 +1,40 @@
 services:
-  postgres:
-    image: postgres:17-alpine
-    ports:
-      - 5432:5432
+  database:
+    image: postgres:latest
     environment:
-      - POSTGRES_PASSWORD=password
       - POSTGRES_USER=user
-      - POSTGRES_DB=CubeTimerDB
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=CubeTimerDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend-network
+
+  backend:
+    build:
+        context: ./CubeTimer.WebApi/CubeTimer.WebApi
+        dockerfile: Dockerfile
+    ports:
+      - "5168:5168"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=database;Port=5432;Database=CubeTimerDb;Username=user;Password=password
+      - JwtSettings__SigningKey=4BuVZdjXhI73BPwc+tcaExErX0e95ZxRZf8+y+Tcx8o=
+      - JwtSettings__Issuer=http://localhost:5168
+      - JwtSettings__Audience=http://localhost:5168
+    depends_on:
+      - database
+    networks:
+      - backend-network
+
+
+
+
+volumes:
+  postgres_data:
+
+networks:
+  backend-network:
+    driver: bridge
